@@ -1,20 +1,16 @@
 class RecentCounter {
-    List<Integer> list;
-    int i;
-    int j;
+    Queue<Integer> list;
     public RecentCounter() {
-        list = new ArrayList<>();
-        i = 0;
-        j = -1;
+        list = new LinkedList<>();
     }
     
     public int ping(int t) {
         list.add(t);
-        j++;
-        while(i<j && list.get(j) - 3000 > list.get(i)){
-            i++;
+        
+        while(!list.isEmpty() && t - 3000 > list.peek()){
+            list.poll();
         }
-        return j - i + 1;
+        return list.size();
     }
 }
 
