@@ -7,7 +7,7 @@ class Solution {
         if (left > right) {
             return null;
         }
-        
+         
         int mid = left + (right - left) / 2;
         
         TreeNode node = new TreeNode(nums[mid]);
