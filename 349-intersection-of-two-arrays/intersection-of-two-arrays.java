@@ -1,27 +1,22 @@
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
-      Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        
-        int i = 0, j = 0;
-        int[] temp = new int[Math.min(nums1.length, nums2.length)];
-        int k = 0;
-        
-        while (i < nums1.length && j < nums2.length) {
-            if (nums1[i] < nums2[j]) {
-                i++;
-            } else if (nums1[i] > nums2[j]) {
-                j++;
-            } else {
-                // Add to result if it's the first element or different from the last added element
-                if (k == 0 || temp[k - 1] != nums1[i]) {
-                    temp[k++] = nums1[i];
-                }
-                i++;
-                j++;
+        HashSet<Integer> hs = new HashSet<>();
+        for(int i=0;i<nums1.length;i++){
+            hs.add(nums1[i]);
+        }
+        int count = 0;
+
+        HashSet<Integer> result = new HashSet<>();
+        for(int i=0;i<nums2.length;i++){
+            if(hs.contains(nums2[i])){
+               result.add(nums2[i]);
             }
         }
-        
-        return Arrays.copyOf(temp, k);
-        }
+      int ans[] = new int[result.size()];
+      int index = 0;
+      for(int num: result){
+        ans[index++] = num;
+      }
+      return ans;
+    }
 }
