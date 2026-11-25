@@ -1,28 +1,25 @@
 class Solution {
     public int diagonalPrime(int[][] nums) {
-        int maxPrime = 0;
-        int n = nums.length;
-
-        for (int i = 0; i < n; i++) {
-            int primary = nums[i][i];
-            int secondary = nums[i][n - i - 1];
-
-            if (isPrime(primary) && primary > maxPrime) {
-                maxPrime = primary;
+        int sum = 0;
+        for(int i=0;i<nums.length;i++){
+        int primary = nums[i][i];
+        int secondary = nums[i][nums.length-i-1];
+            if(isPrime(primary) && primary > sum){
+               sum = primary;
             }
-            if (isPrime(secondary) && secondary > maxPrime) {
-                maxPrime = secondary;
+            if(isPrime(secondary) && secondary > sum){
+                sum=secondary;
             }
+
         }
-
-        return maxPrime;
+        return sum;
     }
-
-    public static boolean isPrime(int n) {
-        if (n < 2) {
+    public static boolean isPrime(int n){
+        if(n<2){
             return false;
         }
-        for (long d = 2; d * d <= n; d++) {
+        boolean isPrime = true;
+     for (long d = 2; d * d <= n; d++) {
             if (n % d == 0) {
                 return false;
             }
