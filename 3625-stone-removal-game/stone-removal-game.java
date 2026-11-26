@@ -1,11 +1,15 @@
 class Solution {
     public boolean canAliceWin(int n) {
-        int take = 10, moves = 0;
-        while (n >= take) {
-            n -= take;
-            take--;
-            moves++;
+        
+       int remove = 10;
+        int turn = 0;
+        while(n>=remove){
+            n-=remove;
+            remove--;
+            turn++;
+
         }
-        return moves % 2 == 1;
+            return turn%2==1;
+        
     }
 }
